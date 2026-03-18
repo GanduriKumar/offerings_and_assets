@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Enterprise Agentic AI Readiness Assessment Poster</title>
+  <style>
+    :root {
+      --paper: #f8f9fa;
+      --card: #ffffff;
+      --surface: #f1f3f4;
+      --ink: #202124;
+      --muted: #5f6368;
+      --line: rgba(95, 99, 104, 0.18);
+      --blue: #4285f4;
+      --blue-soft: #e8f0fe;
+      --green: #34a853;
+      --yellow: #fbbc04;
+      --red: #ea4335;
+      --shadow: 0 10px 30px rgba(60, 64, 67, 0.12);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font: 16px/1.4 "Aptos", "Segoe UI", Arial, sans-serif;
+      color: var(--ink);
+      background: linear-gradient(180deg, #eef3f7 0%, var(--paper) 100%);
+      scroll-snap-type: y mandatory;
+      overflow-y: auto;
+    }
+    .poster {
+      width: min(1280px, 100vw);
+      aspect-ratio: 16 / 9;
+      min-height: 0;
+      height: min(100vh, calc(100vw * 9 / 16));
+      margin: 0 auto;
+      padding: 14px 18px;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, var(--card), var(--surface));
+      box-shadow: var(--shadow);
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      gap: 8px;
+      overflow: hidden;
+    }
+    .top {
+      display: grid;
+      grid-template-columns: 1.45fr 0.75fr;
+      gap: 12px;
+      align-items: stretch;
+    }
+    .tag {
+      display: inline-block;
+      margin-bottom: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--blue-soft);
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(38px, 3.5vw, 54px);
+      line-height: 0.96;
+      max-width: 760px;
+    }
+    .sub {
+      font-size: clamp(18px, 1.65vw, 24px);
+      line-height: 1.12;
+      max-width: 720px;
+      color: var(--ink);
+      margin: 0;
+    }
+    .callout {
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: linear-gradient(180deg, #4285f4, #3367d6);
+      color: #ffffff;
+      border: 1px solid rgba(66, 133, 244, 0.22);
+    }
+    .callout strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .callout ul {
+      margin: 0;
+      padding-left: 16px;
+      font-size: 15px;
+      line-height: 1.32;
+    }
+    .mid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+    .stat, .card {
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.96);
+    }
+    .stat .big {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--blue);
+      line-height: 1;
+    }
+    .mid .stat:nth-child(2) .big { color: var(--green); }
+    .mid .stat:nth-child(3) .big { color: var(--yellow); }
+    .mid .stat:nth-child(4) .big { color: var(--red); }
+    .stat .label {
+      margin-top: 4px;
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .content {
+      display: grid;
+      grid-template-columns: 1.02fr 0.98fr;
+      gap: 8px;
+      min-height: 0;
+    }
+    .stack {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      gap: 8px;
+      min-height: 0;
+    }
+    .card h2 {
+      margin: 0 0 6px;
+      font-size: clamp(19px, 1.55vw, 24px);
+      line-height: 1.08;
+    }
+    .card p {
+      margin: 0 0 6px;
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.3;
+    }
+    .card ul {
+      margin: 0;
+      padding-left: 16px;
+      font-size: 15px;
+      line-height: 1.3;
+      color: var(--muted);
+    }
+    .card li { margin: 3px 0; }
+    .footer {
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: var(--blue-soft);
+      border: 1px solid var(--line);
+    }
+    .footer .line {
+      font-size: clamp(18px, 1.55vw, 22px);
+      line-height: 1.12;
+      color: var(--ink);
+      max-width: 920px;
+    }
+    .meta {
+      margin-top: 6px;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(95, 99, 104, 0.9);
+    }
+    @media (max-width: 980px) {
+      .poster {
+        width: 100%;
+        height: auto;
+        min-height: 100vh;
+        aspect-ratio: auto;
+        grid-template-rows: auto;
+        overflow: visible;
+      }
+      .top, .mid, .content, .stack {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+      }
+    }
+    @media print {
+      body {
+        background: #ffffff;
+        scroll-snap-type: none;
+      }
+      .poster {
+        width: 100%;
+        height: 100vh;
+        min-height: 100vh;
+        aspect-ratio: 16 / 9;
+        border-radius: 0;
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+<body tabindex="0">
+  <div class="poster">
+    <div class="top">
+      <div>
+        <div class="tag">For Decision Makers</div>
+        <h1>Enterprise Agentic AI Readiness Assessment</h1>
+        <p class="sub">A fixed-fee, senior-led assessment that helps enterprise leaders decide where agentic AI is credible, what is ready for pilot now, and what must be controlled before moving forward.</p>
+      </div>
+      <div class="callout">
+        <strong>What You Get</strong>
+        <ul>
+          <li>2 to 4 workflows reviewed</li>
+          <li>readiness and control view</li>
+          <li>go / no-go recommendation set</li>
+          <li>90-day next-step path</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mid">
+      <div class="stat"><div class="big">2 Weeks</div><div class="label">Decision Window</div></div>
+      <div class="stat"><div class="big">Fixed Fee</div><div class="label">Easy To Buy</div></div>
+      <div class="stat"><div class="big">Senior-Led</div><div class="label">Specialist Delivery</div></div>
+      <div class="stat"><div class="big">Go / No-Go</div><div class="label">Clear Outcome</div></div>
+    </div>
+
+    <div class="content">
+      <div class="card">
+        <h2>Why Consider This</h2>
+        <p>Most organizations do not need more agentic AI ideas. They need a disciplined way to identify which opportunities are credible, governable, and worth piloting.</p>
+        <ul>
+          <li>Which workflows are fit for agentic AI?</li>
+          <li>What can be piloted now, not in theory?</li>
+          <li>Which control gaps matter first?</li>
+          <li>Should leadership proceed, narrow scope, defer, or stop?</li>
+        </ul>
+      </div>
+      <div class="stack">
+        <div class="card">
+          <h2>Who Should Consider Buying</h2>
+          <ul>
+            <li>CIOs, CTOs, COOs, and digital leaders</li>
+            <li>GCC leaders and transformation heads</li>
+            <li>delivery and operations leaders</li>
+            <li>executive sponsors evaluating workflow-level AI moves</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h2>What You Will Receive</h2>
+          <ul>
+            <li>executive decision summary</li>
+            <li>workflow suitability scorecard</li>
+            <li>readiness and control view</li>
+            <li>go / no-go recommendation by workflow</li>
+            <li>90-day next-step recommendation</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="line">A practical executive decision product for buyers who want to make a controlled, defensible call on where agentic AI belongs.</div>
+      <div class="meta">[Brand Placeholder] | Enterprise Agentic AI Readiness Assessment</div>
+    </div>
+  </div>
+  <script>
+    (() => {
+      const slides = Array.from(document.querySelectorAll('.poster'));
+      if (!slides.length) return;
+
+      const focusSurface = () => {
+        if (document.activeElement !== document.body) {
+          document.body.focus({ preventScroll: true });
+        }
+      };
+
+      const goToSlide = (index) => {
+        const nextIndex = Math.max(0, Math.min(index, slides.length - 1));
+        slides[nextIndex].scrollIntoView({ behavior: 'smooth', block: 'start' });
+      };
+
+      const toggleFullscreen = async () => {
+        try {
+          if (!document.fullscreenElement) {
+            await document.documentElement.requestFullscreen();
+          } else {
+            await document.exitFullscreen();
+          }
+        } catch (error) {
+          console.error('Fullscreen toggle failed', error);
+        }
+      };
+
+      window.addEventListener('load', focusSurface);
+      window.addEventListener('click', focusSurface);
+      document.addEventListener('fullscreenchange', focusSurface);
+      focusSurface();
+
+      window.addEventListener('keydown', (event) => {
+        const tag = document.activeElement && document.activeElement.tagName;
+        if (tag === 'INPUT' || tag === 'TEXTAREA' || document.activeElement?.isContentEditable) return;
+
+        switch (event.key) {
+          case 'ArrowDown':
+          case 'ArrowRight':
+          case 'PageDown':
+          case ' ':
+          case 'ArrowUp':
+          case 'ArrowLeft':
+          case 'PageUp':
+          case 'Home':
+          case 'End':
+            event.preventDefault();
+            goToSlide(0);
+            break;
+          case 'f':
+          case 'F':
+            event.preventDefault();
+            toggleFullscreen();
+            break;
+          case 'Escape':
+            if (document.fullscreenElement) {
+              event.preventDefault();
+              document.exitFullscreen();
+            }
+            break;
+        }
+      }, true);
+    })();
+  </script>
+</body>
+</html>

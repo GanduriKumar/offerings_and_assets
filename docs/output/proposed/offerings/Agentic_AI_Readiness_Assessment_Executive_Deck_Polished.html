@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Enterprise Agentic AI Readiness Assessment</title>
+  <style>
+    :root {
+      --paper: #f8f9fa;
+      --card: #ffffff;
+      --surface: #f1f3f4;
+      --ink: #202124;
+      --muted: #5f6368;
+      --line: rgba(95, 99, 104, 0.18);
+      --blue: #4285f4;
+      --blue-soft: #e8f0fe;
+      --green: #34a853;
+      --green-soft: #e6f4ea;
+      --yellow: #fbbc04;
+      --yellow-soft: #fef7e0;
+      --red: #ea4335;
+      --red-soft: #fce8e6;
+      --shadow: 0 10px 30px rgba(60, 64, 67, 0.12);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font: 16px/1.45 "Aptos", "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(180deg, #eef3f7 0%, var(--paper) 100%);
+      scroll-snap-type: y mandatory;
+      overflow-y: auto;
+    }
+    .wrap {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 18px;
+    }
+    .slide {
+      position: relative;
+      overflow: hidden;
+      min-height: 100vh;
+      margin: 0;
+      padding: 34px 38px;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: linear-gradient(180deg, var(--card), var(--surface));
+      box-shadow: var(--shadow);
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .slide + .slide {
+      margin-top: 22px;
+    }
+    .slide::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(45, 95, 134, 0.03), transparent 28%);
+      pointer-events: none;
+    }
+    .eyebrow {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: var(--blue-soft);
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    h1, h2, h3, p, ul, .grid, .hero, .split, .quote, .metric-row { position: relative; }
+    h1, h2, h3 {
+      margin: 0 0 12px;
+      line-height: 1.06;
+    }
+    h1 { font-size: 50px; max-width: 860px; }
+    h2 { font-size: 34px; max-width: 760px; }
+    h3 { font-size: 18px; }
+    p {
+      margin: 0 0 12px;
+      color: var(--muted);
+      max-width: 900px;
+    }
+    .lead {
+      font-size: 24px;
+      line-height: 1.2;
+      color: var(--ink);
+      max-width: 880px;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.35fr 0.85fr;
+      gap: 24px;
+      align-items: end;
+    }
+    .promise {
+      padding: 20px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, #4285f4, #3367d6);
+      color: #ffffff;
+      border: 1px solid rgba(66, 133, 244, 0.22);
+    }
+    .promise strong {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 15px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .promise ul {
+      margin: 0;
+      padding-left: 18px;
+      color: rgba(246, 249, 251, 0.92);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+    .tile {
+      padding: 18px;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.96);
+    }
+    .tile strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--ink);
+      font-size: 15px;
+    }
+    .tile p, .tile ul {
+      margin: 0;
+      color: var(--muted);
+    }
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 18px;
+    }
+    .panel {
+      padding: 22px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.96);
+      border: 1px solid var(--line);
+    }
+    .panel.navy {
+      background: linear-gradient(180deg, #1a73e8, #4285f4);
+      color: #ffffff;
+    }
+    .panel.navy p, .panel.navy ul, .panel.navy h3 { color: rgba(255, 255, 255, 0.94); }
+    .metric-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 20px;
+    }
+    .metric {
+      padding: 18px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.97);
+      border: 1px solid var(--line);
+    }
+    .metric .big {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--blue);
+      line-height: 1;
+    }
+    .metric .label {
+      margin-top: 8px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+    }
+    .quote {
+      margin-top: 18px;
+      padding: 18px 20px;
+      border-left: 4px solid var(--blue);
+      border-radius: 18px;
+      background: var(--blue-soft);
+      color: var(--ink);
+      font-size: 19px;
+      line-height: 1.25;
+      max-width: 980px;
+    }
+    .metric:nth-child(2) .big { color: var(--green); }
+    .metric:nth-child(3) .big { color: var(--yellow); }
+    .metric:nth-child(4) .big { color: var(--red); }
+    ul { padding-left: 18px; color: var(--muted); }
+    li { margin: 8px 0; }
+    .footer-tag {
+      position: absolute;
+      right: 26px;
+      bottom: 22px;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(17, 32, 49, 0.42);
+    }
+    @media (max-width: 860px) {
+      .hero, .split, .metric-row { grid-template-columns: 1fr; }
+      h1 { font-size: 38px; }
+      h2 { font-size: 30px; }
+      .slide {
+        min-height: 100vh;
+        padding: 26px 22px;
+      }
+    }
+    @media print {
+      body {
+        background: #ffffff;
+        scroll-snap-type: none;
+      }
+      .wrap {
+        max-width: none;
+        padding: 0;
+      }
+      .slide {
+        min-height: 100vh;
+        break-after: page;
+        page-break-after: always;
+        border-radius: 0;
+        box-shadow: none;
+        margin: 0;
+      }
+      .slide + .slide {
+        margin-top: 0;
+      }
+    }
+</style>
+</head>
+<body tabindex="0">
+  <div class="wrap">
+    <section class="slide">
+      <div class="eyebrow">For Decision Makers</div>
+      <div class="hero">
+        <div>
+          <h1>Enterprise Agentic AI Readiness Assessment</h1>
+          <p class="lead">A fixed-fee, senior-led decision product for leaders who need to know where agentic AI is credible, what is ready for pilot now, and what must be controlled before moving forward.</p>
+          <div class="quote">A practical way to decide which agentic AI opportunities are credible, which should move to pilot, and which should not be funded yet.</div>
+        </div>
+        <div class="promise">
+          <strong>In 2 Weeks</strong>
+          <ul>
+            <li>2 to 4 workflows assessed</li>
+            <li>clear readiness and control view</li>
+            <li>go / no-go recommendation set</li>
+            <li>90-day next-step path</li>
+          </ul>
+        </div>
+      </div>
+      <div class="metric-row">
+        <div class="metric"><div class="big">Fixed Fee</div><div class="label">Easy To Approve</div></div>
+        <div class="metric"><div class="big">2 Weeks</div><div class="label">Decision Window</div></div>
+        <div class="metric"><div class="big">Senior-Led</div><div class="label">No Analyst Swamp</div></div>
+        <div class="metric"><div class="big">Go / No-Go</div><div class="label">Clear Outcome</div></div>
+      </div>
+      <div class="footer-tag">[Brand Placeholder]</div>
+    </section>
+
+    <section class="slide">
+      <div class="eyebrow">Why Consider This</div>
+      <h2>Get Clarity Before You Commit Budget And Risk</h2>
+      <p>Organizations already have enough AI ideas. What they lack is a disciplined way to identify which agentic opportunities are real, governable, and worth piloting.</p>
+      <div class="grid">
+        <div class="tile">
+          <strong>Decision 1</strong>
+          Which workflows are actually fit for agentic AI rather than simple automation or copilots?
+        </div>
+        <div class="tile">
+          <strong>Decision 2</strong>
+          What can be piloted now without creating unmanaged operational exposure?
+        </div>
+        <div class="tile">
+          <strong>Decision 3</strong>
+          Which governance, observability, and failure-containment gaps matter first?
+        </div>
+        <div class="tile">
+          <strong>Decision 4</strong>
+          Should leadership proceed, narrow scope, defer, or stop?
+        </div>
+      </div>
+      <div class="footer-tag">Buyer Clarity Before Budget Commitment</div>
+    </section>
+
+    <section class="slide">
+      <div class="eyebrow">What You Get</div>
+      <h2>What You Will Have At The End Of The Assessment</h2>
+      <div class="split">
+        <div class="panel">
+          <h3>Your Deliverables</h3>
+          <ul>
+            <li>executive decision summary</li>
+            <li>workflow suitability scorecard</li>
+            <li>readiness heatmap</li>
+            <li>governance and failure-containment gap view</li>
+            <li>go / no-go recommendation by workflow</li>
+            <li>90-day next-step plan</li>
+          </ul>
+        </div>
+        <div class="panel navy">
+          <h3>What This Helps You Decide</h3>
+          <p>Use the output directly in funding, risk, pilot, and executive approval discussions.</p>
+          <ul>
+            <li>where agentic AI is credible</li>
+            <li>where it is premature or risky</li>
+            <li>what should be piloted next</li>
+            <li>what should be deferred or rejected</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-tag">Decision-Ready Output For Leaders</div>
+    </section>
+
+    <section class="slide">
+      <div class="eyebrow">How It Works</div>
+      <h2>Easy To Approve, Fast To Deliver, Clear To Use</h2>
+      <div class="grid">
+        <div class="tile">
+          <strong>Quickfire Assessment</strong>
+          fixed-fee, 2-week assessment covering 2 to 4 workflows for immediate pilot decision support
+        </div>
+        <div class="tile">
+          <strong>Detailed Assessment</strong>
+          fixed-fee, 4 to 6 weeks with deeper stakeholder, control, and operating-model analysis
+        </div>
+        <div class="tile">
+          <strong>Primary Buyers</strong>
+          CIO, CTO, COO, GCC leader, transformation head, delivery leader, digital operations leader
+        </div>
+        <div class="tile">
+          <strong>Ideal Trigger</strong>
+          leadership is discussing agents, orchestration, or tool-using workflows and needs a credible outside view
+        </div>
+      </div>
+      <div class="footer-tag">Short Cycle Specialist Offer</div>
+    </section>
+
+  </div>
+  <script>
+    (() => {
+      const slides = Array.from(document.querySelectorAll('.slide'));
+      if (!slides.length) return;
+
+      let activeIndex = 0;
+      const focusSurface = () => {
+        if (document.activeElement !== document.body) {
+          document.body.focus({ preventScroll: true });
+        }
+      };
+
+      const setActiveIndex = () => {
+        const midpoint = window.innerHeight / 2;
+        let bestIndex = 0;
+        let bestDistance = Number.POSITIVE_INFINITY;
+
+        slides.forEach((slide, index) => {
+          const rect = slide.getBoundingClientRect();
+          const center = rect.top + rect.height / 2;
+          const distance = Math.abs(center - midpoint);
+          if (distance < bestDistance) {
+            bestDistance = distance;
+            bestIndex = index;
+          }
+        });
+
+        activeIndex = bestIndex;
+      };
+
+      const goToSlide = (index) => {
+        const nextIndex = Math.max(0, Math.min(index, slides.length - 1));
+        activeIndex = nextIndex;
+        slides[nextIndex].scrollIntoView({ behavior: 'smooth', block: 'start' });
+      };
+
+      window.addEventListener('scroll', setActiveIndex, { passive: true });
+      window.addEventListener('resize', setActiveIndex);
+      window.addEventListener('load', focusSurface);
+      window.addEventListener('click', focusSurface);
+      document.addEventListener('fullscreenchange', focusSurface);
+      setActiveIndex();
+      focusSurface();
+
+      const toggleFullscreen = async () => {
+        try {
+          if (!document.fullscreenElement) {
+            await document.documentElement.requestFullscreen();
+          } else {
+            await document.exitFullscreen();
+          }
+        } catch (error) {
+          console.error('Fullscreen toggle failed', error);
+        }
+      };
+
+      window.addEventListener('keydown', (event) => {
+        const tag = document.activeElement && document.activeElement.tagName;
+        if (tag === 'INPUT' || tag === 'TEXTAREA' || document.activeElement?.isContentEditable) return;
+
+        switch (event.key) {
+          case 'ArrowDown':
+          case 'ArrowRight':
+          case 'PageDown':
+          case ' ':
+            event.preventDefault();
+            goToSlide(activeIndex + 1);
+            break;
+          case 'ArrowUp':
+          case 'ArrowLeft':
+          case 'PageUp':
+            event.preventDefault();
+            goToSlide(activeIndex - 1);
+            break;
+          case 'Home':
+            event.preventDefault();
+            goToSlide(0);
+            break;
+          case 'End':
+            event.preventDefault();
+            goToSlide(slides.length - 1);
+            break;
+          case 'f':
+          case 'F':
+            event.preventDefault();
+            toggleFullscreen();
+            break;
+          case 'Escape':
+            if (document.fullscreenElement) {
+              event.preventDefault();
+              document.exitFullscreen();
+            }
+            break;
+        }
+      }, true);
+    })();
+  </script>
+</body>
+</html>
