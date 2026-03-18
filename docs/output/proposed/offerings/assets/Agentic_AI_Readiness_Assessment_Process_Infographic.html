@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Enterprise Agentic AI Readiness Assessment Process Deck</title>
+  <style>
+    :root {
+      --paper: #eff4f8;
+      --surface: #ffffff;
+      --surface-soft: #f8fbfd;
+      --ink: #1f2933;
+      --muted: #52606d;
+      --line: rgba(148, 163, 184, 0.35);
+      --blue: #0f6cbd;
+      --blue-soft: #eaf3fb;
+      --teal: #147d64;
+      --teal-soft: #e8f5f2;
+      --gold: #b7791f;
+      --gold-soft: #fff7e6;
+      --navy: #0f172a;
+      --steel: #334e68;
+      --shadow: 0 18px 34px rgba(15, 23, 42, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font: 16px/1.4 "Aptos", "Segoe UI", Arial, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(15, 108, 189, 0.08), transparent 24%),
+        radial-gradient(circle at bottom right, rgba(20, 125, 100, 0.08), transparent 24%),
+        linear-gradient(180deg, #edf3f8 0%, var(--paper) 100%);
+      scroll-snap-type: y mandatory;
+      overflow-y: auto;
+    }
+
+    .deck {
+      width: min(1360px, 100vw);
+      margin: 0 auto;
+      padding: 10px;
+    }
+
+    .slide {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      min-height: 0;
+      height: min(100vh - 20px, calc(100vw * 9 / 16));
+      margin: 0 auto 18px;
+      padding: 28px 30px;
+      border-radius: 28px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(248, 251, 253, 0.98));
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 18px;
+    }
+
+    .slide::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top right, rgba(15,108,189,0.06), transparent 26%),
+        linear-gradient(180deg, rgba(255,255,255,0.04), transparent 32%);
+      pointer-events: none;
+    }
+
+    .eyebrow,
+    h1,
+    h2,
+    h3,
+    p,
+    ul,
+    .hero-grid,
+    .metrics,
+    .cards,
+    .timeline,
+    .comparison,
+    .deliverables,
+    .footer {
+      position: relative;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: var(--blue-soft);
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      line-height: 1.04;
+    }
+
+    h1 {
+      font-size: clamp(38px, 3.6vw, 56px);
+      max-width: 920px;
+    }
+
+    h2 {
+      font-size: clamp(28px, 2.2vw, 38px);
+      max-width: 860px;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .lead {
+      font-size: clamp(18px, 1.45vw, 24px);
+      line-height: 1.22;
+      color: var(--steel);
+      max-width: 920px;
+    }
+
+    .hero-grid,
+    .comparison,
+    .deliverables {
+      display: grid;
+      gap: 16px;
+    }
+
+    .hero-grid {
+      grid-template-columns: 1.15fr 0.85fr;
+      align-items: end;
+    }
+
+    .callout,
+    .metric,
+    .card,
+    .compare-card,
+    .deliverable {
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.94);
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+    }
+
+    .callout {
+      padding: 18px 20px;
+      background: linear-gradient(180deg, #0f6cbd, #0a548f);
+      color: #ffffff;
+    }
+
+    .callout h3,
+    .callout p,
+    .callout ul {
+      color: #ffffff;
+    }
+
+    .callout ul {
+      margin: 10px 0 0;
+      padding-left: 18px;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      align-self: end;
+    }
+
+    .metric {
+      padding: 16px 18px;
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 28px;
+      line-height: 1;
+      color: var(--blue);
+    }
+
+    .metric span {
+      display: block;
+      margin-top: 7px;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      align-self: stretch;
+      align-content: center;
+    }
+
+    .card {
+      padding: 18px 20px;
+    }
+
+    .card h3,
+    .deliverable h3,
+    .compare-card h3 {
+      color: #102a43;
+    }
+
+    .card p {
+      margin-top: 8px;
+    }
+
+    .card ul {
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .card li {
+      margin: 6px 0;
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      align-self: stretch;
+      align-content: center;
+    }
+
+    .timeline .card:nth-child(2) {
+      background: linear-gradient(180deg, #ffffff, var(--teal-soft));
+    }
+
+    .timeline .card:nth-child(3) {
+      background: linear-gradient(180deg, #ffffff, var(--gold-soft));
+    }
+
+    .comparison {
+      grid-template-columns: 1fr 1fr;
+      align-self: stretch;
+    }
+
+    .compare-card {
+      padding: 20px 22px;
+    }
+
+    .compare-card.quickfire {
+      background: linear-gradient(180deg, #ffffff, var(--blue-soft));
+    }
+
+    .compare-card.detailed {
+      background: linear-gradient(180deg, #ffffff, var(--teal-soft));
+    }
+
+    .compare-card .tagline {
+      display: inline-block;
+      padding: 5px 9px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(255,255,255,0.8);
+      color: var(--navy);
+    }
+
+    .compare-card ul,
+    .deliverable ul {
+      margin: 12px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .compare-card li,
+    .deliverable li {
+      margin: 7px 0;
+    }
+
+    .deliverables {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      align-self: stretch;
+      align-content: center;
+    }
+
+    .deliverable {
+      padding: 18px 20px;
+    }
+
+    .slide-body {
+      display: grid;
+      align-content: center;
+      gap: 18px;
+      min-height: 0;
+    }
+
+    .slide-body.compact {
+      gap: 14px;
+    }
+
+    .slide-intro {
+      max-width: 920px;
+      font-size: 18px;
+      line-height: 1.3;
+      color: var(--steel);
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(51, 78, 104, 0.72);
+    }
+
+    .appendix-label {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 126px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(15, 108, 189, 0.08);
+      color: var(--blue);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .nav-hint {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 10;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: rgba(15, 23, 42, 0.88);
+      color: #f8fafc;
+      font-size: 12px;
+      line-height: 1.35;
+      box-shadow: var(--shadow);
+    }
+
+    @media (max-width: 1040px) {
+      .slide {
+        height: auto;
+        aspect-ratio: auto;
+        min-height: 100vh;
+      }
+
+      .hero-grid,
+      .metrics,
+      .cards,
+      .timeline,
+      .comparison,
+      .deliverables {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media print {
+      body {
+        background: #ffffff;
+        scroll-snap-type: none;
+      }
+
+      .deck {
+        width: 100%;
+        padding: 0;
+      }
+
+      .slide {
+        height: 100vh;
+        min-height: 100vh;
+        border-radius: 0;
+        box-shadow: none;
+        margin: 0;
+        break-after: page;
+        page-break-after: always;
+      }
+
+      .nav-hint {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body tabindex="0">
+  <div class="deck">
+    <section class="slide">
+      <div class="eyebrow">Process Overview</div>
+      <div class="hero-grid">
+        <div>
+          <h1>Enterprise Agentic AI Readiness Assessment</h1>
+          <p class="lead">A stage-based assessment process designed to help leadership understand where agentic AI is credible, what is ready for pilot now, and what conditions need to be addressed before moving forward.</p>
+        </div>
+        <div class="callout">
+          <h3>Assessment Purpose</h3>
+          <p>The process combines workflow suitability review, readiness analysis, and recommendation development so leadership can make practical decisions with confidence.</p>
+          <ul>
+            <li>workflow-level view</li>
+            <li>readiness and control lens</li>
+            <li>clear recommendation view</li>
+            <li>next-step path</li>
+          </ul>
+        </div>
+      </div>
+      <div class="metrics">
+        <div class="metric"><strong>2</strong><span>Assessment Variants</span></div>
+        <div class="metric"><strong>6</strong><span>Core Process Stages</span></div>
+        <div class="metric"><strong>2-6</strong><span>Typical Workflows</span></div>
+        <div class="metric"><strong>4</strong><span>Recommendation Outcomes</span></div>
+      </div>
+      <div class="footer">
+        <span class="appendix-label">Appendix Process View</span>
+        <span>Slide 1 of 4</span>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="eyebrow">Core Stages</div>
+      <div class="slide-body">
+        <div>
+          <h2>The Assessment Follows A Common Six-Stage Process</h2>
+        </div>
+        <p class="slide-intro">The process moves from scope definition and evidence gathering into suitability review, readiness analysis, recommendation development, and executive decision support.</p>
+        <div class="cards">
+          <article class="card">
+            <h3>1. Scope And Alignment</h3>
+            <p>Confirm the sponsor objective, workflows in scope, key stakeholders, evidence sources, and the decision that needs to be supported.</p>
+          </article>
+          <article class="card">
+            <h3>2. Evidence Collection</h3>
+            <p>Gather the workflow materials, stakeholder input, and current-state context needed to build a grounded view.</p>
+          </article>
+          <article class="card">
+            <h3>3. Workflow Suitability Review</h3>
+            <p>Assess whether agentic AI is a strong fit for each workflow based on how the work actually operates.</p>
+          </article>
+          <article class="card">
+            <h3>4. Readiness And Controls Review</h3>
+            <p>Review governance, oversight, observability, accountability, and control conditions needed for safe execution.</p>
+          </article>
+          <article class="card">
+            <h3>5. Recommendation Development</h3>
+            <p>Translate findings into recommendations, supporting rationale, conditions, and next steps for each workflow.</p>
+          </article>
+          <article class="card">
+            <h3>6. Executive Readout</h3>
+            <p>Present a concise view of the findings, recommendation set, and immediate path forward.</p>
+          </article>
+        </div>
+      </div>
+      <div class="footer">
+        <span class="appendix-label">Appendix Process View</span>
+        <span>Slide 2 of 4</span>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="eyebrow">Assessment Variants</div>
+      <div>
+        <h2>Two Delivery Paths Support Different Decision Needs</h2>
+      </div>
+      <div class="comparison">
+        <article class="compare-card quickfire">
+          <div class="tagline">Quickfire Assessment</div>
+          <h3 style="margin-top:12px;">Fast Decision Support</h3>
+          <ul>
+            <li>2-week assessment window</li>
+            <li>typically 2 to 4 workflows</li>
+            <li>focused stakeholder interviews and evidence review</li>
+            <li>emphasis on fit, readiness, control gaps, and immediate next move</li>
+            <li>well suited to a near-term pilot decision</li>
+          </ul>
+        </article>
+        <article class="compare-card detailed">
+          <div class="tagline">Detailed Assessment</div>
+          <h3 style="margin-top:12px;">Deeper Pilot-Readiness View</h3>
+          <ul>
+            <li>4 to 6 week assessment window</li>
+            <li>typically 3 to 6 workflows, depending on complexity</li>
+            <li>broader stakeholder participation and deeper current-state review</li>
+            <li>greater focus on dependencies, controls, alignment, and pilot planning</li>
+            <li>well suited to larger or more complex workflow decisions</li>
+          </ul>
+        </article>
+      </div>
+      <div class="timeline">
+        <article class="card">
+          <h3>Quickfire Timeline</h3>
+          <ul>
+            <li>Week 1: scope, interviews, evidence review, early fit assessment</li>
+            <li>Week 2: readiness review, recommendations, executive readout</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Detailed Timeline</h3>
+          <ul>
+            <li>Weeks 1-2: scope, stakeholder mapping, evidence collection</li>
+            <li>Weeks 3-4: suitability and readiness analysis</li>
+            <li>Weeks 5-6 if required: alignment, refinement, and final readout</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Shared Decision Outcomes</h3>
+          <ul>
+            <li>proceed to pilot</li>
+            <li>proceed with narrowed scope</li>
+            <li>defer until gaps are closed</li>
+            <li>do not pursue</li>
+          </ul>
+        </article>
+      </div>
+      <div class="footer">
+        <span class="appendix-label">Appendix Process View</span>
+        <span>Slide 3 of 4</span>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="eyebrow">Deliverables</div>
+      <div class="slide-body compact">
+        <div>
+          <h2>The Output Set Is Designed For Decision Clarity And Practical Next Steps</h2>
+        </div>
+        <p class="slide-intro">The final output combines executive synthesis, workflow-level assessment, and a practical next-step path so the organization can act with clarity.</p>
+        <div class="deliverables">
+          <article class="deliverable">
+            <h3>Executive Decision Summary</h3>
+            <ul>
+              <li>decision context and scope</li>
+              <li>overall recommendation view</li>
+              <li>top risks and conditions</li>
+              <li>immediate next-step direction</li>
+            </ul>
+          </article>
+          <article class="deliverable">
+            <h3>Workflow Assessment Pack</h3>
+            <ul>
+              <li>workflow suitability scorecards</li>
+              <li>readiness heatmap</li>
+              <li>governance and control gap view</li>
+              <li>recommendation sheet by workflow</li>
+            </ul>
+          </article>
+          <article class="deliverable">
+            <h3>Next-Step Path</h3>
+            <ul>
+              <li>90-day next-step plan</li>
+              <li>pilot-readiness considerations</li>
+              <li>ownership and decision gates</li>
+              <li>follow-on support where required</li>
+            </ul>
+          </article>
+        </div>
+        <div class="callout" style="align-self:end;">
+          <h3>Closing View</h3>
+          <p>The purpose of the assessment is to provide a practical, well-supported view of what should move forward, under what conditions, and at what pace.</p>
+        </div>
+      </div>
+      <div class="footer">
+        <span class="appendix-label">Appendix Process View</span>
+        <span>Slide 4 of 4</span>
+      </div>
+    </section>
+  </div>
+
+  <div class="nav-hint">Navigation: Arrow keys, Page Up/Down, Space, Home/End, F for fullscreen</div>
+
+  <script>
+    (() => {
+      const slides = Array.from(document.querySelectorAll('.slide'));
+      if (!slides.length) return;
+
+      let activeIndex = 0;
+
+      const focusSurface = () => {
+        if (document.activeElement !== document.body) {
+          document.body.focus({ preventScroll: true });
+        }
+      };
+
+      const setActiveIndex = () => {
+        const midpoint = window.innerHeight / 2;
+        let bestIndex = 0;
+        let bestDistance = Number.POSITIVE_INFINITY;
+
+        slides.forEach((slide, index) => {
+          const rect = slide.getBoundingClientRect();
+          const center = rect.top + rect.height / 2;
+          const distance = Math.abs(center - midpoint);
+          if (distance < bestDistance) {
+            bestDistance = distance;
+            bestIndex = index;
+          }
+        });
+
+        activeIndex = bestIndex;
+      };
+
+      const goToSlide = (index) => {
+        const nextIndex = Math.max(0, Math.min(index, slides.length - 1));
+        activeIndex = nextIndex;
+        slides[nextIndex].scrollIntoView({ behavior: 'smooth', block: 'start' });
+      };
+
+      const toggleFullscreen = async () => {
+        try {
+          if (!document.fullscreenElement) {
+            await document.documentElement.requestFullscreen();
+          } else {
+            await document.exitFullscreen();
+          }
+        } catch (error) {
+          console.error('Fullscreen toggle failed', error);
+        }
+      };
+
+      window.addEventListener('scroll', setActiveIndex, { passive: true });
+      window.addEventListener('resize', setActiveIndex);
+      window.addEventListener('load', focusSurface);
+      window.addEventListener('click', focusSurface);
+      document.addEventListener('fullscreenchange', focusSurface);
+
+      setActiveIndex();
+      focusSurface();
+
+      window.addEventListener('keydown', (event) => {
+        const tag = document.activeElement && document.activeElement.tagName;
+        if (tag === 'INPUT' || tag === 'TEXTAREA' || document.activeElement?.isContentEditable) return;
+
+        switch (event.key) {
+          case 'ArrowDown':
+          case 'ArrowRight':
+          case 'PageDown':
+          case ' ':
+            event.preventDefault();
+            goToSlide(activeIndex + 1);
+            break;
+          case 'ArrowUp':
+          case 'ArrowLeft':
+          case 'PageUp':
+            event.preventDefault();
+            goToSlide(activeIndex - 1);
+            break;
+          case 'Home':
+            event.preventDefault();
+            goToSlide(0);
+            break;
+          case 'End':
+            event.preventDefault();
+            goToSlide(slides.length - 1);
+            break;
+          case 'f':
+          case 'F':
+            event.preventDefault();
+            toggleFullscreen();
+            break;
+          case 'Escape':
+            if (document.fullscreenElement) {
+              event.preventDefault();
+              document.exitFullscreen();
+            }
+            break;
+        }
+      }, true);
+    })();
+  </script>
+</body>
+</html>
