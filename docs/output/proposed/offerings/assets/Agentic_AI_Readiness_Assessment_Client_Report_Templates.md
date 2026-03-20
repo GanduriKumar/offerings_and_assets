@@ -1,6 +1,6 @@
 # Enterprise Agentic AI Readiness Assessment Client Report Templates
 
-## How To Use This Pack
+## How To Use These Templates
 Use these templates to assemble the final client output set for the 2-week Quickfire assessment. Keep the language direct. Every section should support a decision, not just describe a situation.
 
 ## Template 1. Executive Decision Summary
@@ -232,4 +232,4 @@ Slide 8: 90-day path
 - ownership of the next move is missing
 
 ### Verdict
-This template pack is worth using because it supports the exact promise already made in the offering collateral. It stays commercially useful only if the final reports remain short, explicit, and hard to misread.
+These templates are commercially useful only if the final reports remain short, explicit, and hard to misread.

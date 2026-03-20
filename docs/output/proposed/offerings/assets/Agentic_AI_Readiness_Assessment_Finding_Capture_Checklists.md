@@ -1,7 +1,7 @@
 # Enterprise Agentic AI Readiness Assessment Finding Capture Checklists
 
 ## Purpose
-This document is for internal use during delivery. It helps capture findings consistently while assessing workflows, controls, readiness, and next-step recommendations.
+This working document supports consistent capture of findings during delivery while assessing workflows, controls, readiness, and next-step recommendations.
 
 Two finding-capture tracks are provided:
 
@@ -314,7 +314,7 @@ Before finalizing the output, confirm:
 - gap owners and timing are explicit
 - dependencies and decision gates are visible
 
-## Recommended Internal Capture Format
+## Recommended Capture Format
 Use these checklists alongside:
 - interview notes
 - workflow scorecards

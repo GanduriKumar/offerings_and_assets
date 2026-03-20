@@ -17,9 +17,9 @@ Most organizations do not need more agentic AI ideas. They need a way to separat
 The immediate executive questions are simple:
 
 - Which workflows are actually suitable for agentic AI?
-- What are we ready to pilot now, not in theory?
+- What is ready to pilot now, not in theory?
 - Where are the governance, observability, and failure-containment gaps?
-- Should we proceed, narrow scope, defer, or stop?
+- Should leadership proceed, narrow scope, defer, or stop?
 
 ## The Promise
 **In two weeks, leadership gets a clear recommendation on where agentic AI can create value, which workflows are fit for pilot, what conditions are missing, and what the next move should be.**
@@ -154,7 +154,7 @@ This offer is designed to open structured follow-on work:
 **A two-week, fixed-fee assessment that helps enterprise leaders decide where agentic AI is credible, what is ready for pilot now, and what risks must be controlled before moving forward.**
 
 ## Short Approval Language
-This assessment gives us a fast, structured way to determine which agentic AI opportunities are credible, what controls are missing, and whether we should proceed with a pilot, narrow scope, defer, or stop.
+This assessment gives leadership a fast, structured way to determine which agentic AI opportunities are credible, what controls are missing, and whether a pilot should proceed, narrow scope, defer, or stop.
 
 ## Potato Mode Validation
 

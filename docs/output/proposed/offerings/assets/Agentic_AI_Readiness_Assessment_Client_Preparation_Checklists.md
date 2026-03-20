@@ -327,11 +327,11 @@ To keep collection practical, the client can submit materials in any of the foll
 - a written summary document per workflow
 - a mix of documents and interview walkthroughs
 
-Perfect documentation is not required. What matters most is that the assessment team gets a clear, accurate view of how the workflows operate today and what constraints shape them.
+Perfect documentation is not required. What matters most is a clear, accurate view of how the workflows operate today and what constraints shape them.
 
 ## Suggested Cover Message To Share With The Client
 You can share the checklist with the following note:
 
 ```text
-To help the assessment start efficiently, please use the relevant preparation checklist to gather the available workflow, stakeholder, and control information in advance. Existing materials are sufficient; there is no need to create a polished document set from scratch. If any information is unavailable, please note that clearly so we can address it during the assessment.
+To help the assessment start efficiently, please use the relevant preparation checklist to gather the available workflow, stakeholder, and control information in advance. Existing materials are sufficient; there is no need to create a polished document set from scratch. If any information is unavailable, please note that clearly so it can be addressed during the assessment.
 ```
